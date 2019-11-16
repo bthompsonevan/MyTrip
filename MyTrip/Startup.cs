@@ -26,13 +26,20 @@ namespace MyTrip
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            
+            //Changed the routing of default locations so it will run with UserHomeController and UserHomeScreen view
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=UserHome}/{action=UserHomeScreen}/{id?}");
+            });
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
             //deleted Hello World code and added this code
             app.UseMvcWithDefaultRoute();
+
+
         }
     }
 }
