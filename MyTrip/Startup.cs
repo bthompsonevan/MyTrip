@@ -36,7 +36,7 @@ namespace MyTrip
             //Changed the routing of default locations so it will run with UserHomeController and UserHomeScreen view
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", "{controller=UserHome}/{action=UserHomeScreen}/{id?}");
+                routes.MapRoute("default", "{controller=UserHome}/{action=UserLogInScreen}/{id?}");
             });
 
 
