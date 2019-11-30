@@ -12,5 +12,10 @@ namespace MyTrip.Controllers
         {
             return View();
         }
+
+        public ViewResult UserLogInScreen()
+        {
+            return View();
+        }
     }
 }
