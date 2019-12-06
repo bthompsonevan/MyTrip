@@ -1,7 +1,7 @@
 ﻿@model MyTrip.Models.User
 
 @{
-    Layout = null;
+    Layout = "_NonUserLayout";
     ViewData["Title"] = "UserLogInScreen";
 }
 
@@ -12,7 +12,7 @@
 
 <div class="text-center">
 
-    <form asp-controller="Home" asp-action="UserLogInScreen" method="post">
+    <form asp-controller="UserHome" asp-action="UserLogInScreen" method="post">
         <p>
             <label asp-for="UserName">User Name: </label><br />
             <input asp-for="UserName" />
