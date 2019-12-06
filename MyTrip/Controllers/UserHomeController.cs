@@ -2,18 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MyTrip.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyTrip.Controllers
 {
     public class UserHomeController : Controller
     {
-        public ViewResult UserHomeScreen()
+        public IActionResult UserHomeScreen()
         {
             return View();
         }
 
-        public ViewResult UserLogInScreen()
+        public IActionResult UserLogInScreen()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult UserLogInScreen(User user)
+        {
+            return View("UserHomeScreen", user);
+        }
+
+        public IActionResult CreateUser()
         {
             return View();
         }
