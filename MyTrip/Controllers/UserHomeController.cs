@@ -8,12 +8,17 @@ namespace MyTrip.Controllers
 {
     public class UserHomeController : Controller
     {
-        public ViewResult UserHomeScreen()
+        public IActionResult UserHomeScreen()
         {
             return View();
         }
 
-        public ViewResult UserLogInScreen()
+        public IActionResult UserLogInScreen()
+        {
+            return View();
+        }
+
+        public IActionResult AddUser()
         {
             return View();
         }
