@@ -18,7 +18,7 @@ namespace MyTrip.Controllers
             return View();
         }
 
-        public IActionResult AddUser()
+        public IActionResult CreateUser()
         {
             return View();
         }
