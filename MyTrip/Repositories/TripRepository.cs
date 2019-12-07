@@ -44,5 +44,10 @@ namespace MyTrip.Repositories
             context.Trips.Update(trip);
             context.SaveChanges();
         }
+
+        public void AddAttendeeToTrip(Trip trip, TripAttendee tripAttendee)
+        {
+
+        }
     }
 }

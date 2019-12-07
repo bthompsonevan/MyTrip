@@ -14,5 +14,6 @@ namespace MyTrip.Repositories
         void AddTrip(Trip trip);
         void AddTripToUser(User user, Trip trip);
         void AddStopToTrip(Trip trip, TripStop tripStop);
+        void AddAttendeeToTrip(Trip trip, TripAttendee);
     }
 }
