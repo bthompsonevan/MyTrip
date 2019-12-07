@@ -62,6 +62,11 @@ namespace MyTrip.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ViewResult AddTrip(User user,Trip trip)
+        {
+            return View("UserHomeScreen");
+        }
 
 
     }
