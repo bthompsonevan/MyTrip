@@ -15,5 +15,6 @@ namespace MyTrip.Models
         public DbSet<Trip> Trips { get; set; }
         public DbSet<TripAttendee> TripAttendees { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<TripStop> TripStops { get; set; }
     }
 }
