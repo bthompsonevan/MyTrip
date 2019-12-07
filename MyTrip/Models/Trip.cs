@@ -12,7 +12,7 @@ namespace MyTrip.Models
         public string TripStartDate { get; set; }
         public string TripEndDate { get; set; }
         public string TripDestination { get; set; }   //  The overall location
-        public string TripStops { get; set; }   //TODOL should this be a list of stops?!?!?!
+        public string TripStops { get; set; }   //TODO: should this be a list of stops?!?!?!
 
     }
 }

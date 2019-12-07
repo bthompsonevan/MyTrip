@@ -1,0 +1,41 @@
+﻿@model MyTrip.Models.User
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "CurrentTrips";
+}
+
+<h1>CurrentTrips</h1>
+
+@*TODO: Have a loop that will display all of the trips that are stored in a user
+    TODO: Replace test1 with looped data *@
+
+<div class="text-center">
+    <table class="trip-table">
+        <thead>
+            <tr>
+                <th>Trip Name</th>
+                <th>Trip Start Date</th>
+                <th>Trip End Date</th>
+                <th>Trip Desitination</th>
+                <th>Trip Stops</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>test1</td>
+                <td>test1</td>
+                <td>test1</td>
+                <td>test1</td>
+                <td>test1</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+ @*public int TripID { get; set; }
+        public string TripName { get; set; }
+        public string TripStartDate { get; set; }
+        public string TripEndDate { get; set; }
+        public string TripDestination { get; set; }   //  The overall location
+        public string TripStops { get; set; }*@ 
