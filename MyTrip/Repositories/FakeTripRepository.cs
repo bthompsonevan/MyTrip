@@ -32,5 +32,10 @@ namespace MyTrip.Repositories
             trip.TripStops.Add(tripStop);
         }
 
+        public void AddAttendeeToTrip(Trip trip, TripAttendee tripAttendee)
+        {
+            trip.TripAttendees.Add(tripAttendee);
+        }
+
     }
 }
