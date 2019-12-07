@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MyTrip.Models;
+using MyTrip.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyTrip.Controllers
 {
     public class UserHomeController : Controller
     {
+        ITripRepository repo;
+        public UserHomeController(ITripRepository r)
+        {
+            repo = r;
+        }
+
         public IActionResult UserHomeScreen()
         {
             return View();
@@ -48,6 +55,7 @@ namespace MyTrip.Controllers
             //TODO: decide where to go after TripAttendee has been added
             return View();
         }
+
         /* **********************************
         *   CURRENT TRIP ACTION METHODS     *     
         ************************************/
@@ -55,6 +63,7 @@ namespace MyTrip.Controllers
         {
             return View();
         }
+
         /* **********************************
         *     ADD TRIP ACTION METHODS      *     
         ************************************/
@@ -62,12 +71,14 @@ namespace MyTrip.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public ViewResult AddTrip(User user,Trip trip)
+        public ViewResult AddTrip(Trip trip)
         {
+            repo.AddTrip(trip);
             return View("UserHomeScreen");
         }
 
-
+     
     }
 }

@@ -12,8 +12,8 @@ namespace MyTrip.Models
 
         public int TripID { get; set; }
         public string TripName { get; set; }
-        public string TripStartDate { get; set; }
-        public string TripEndDate { get; set; }
+        public DateTime TripStartDate { get; set; }
+        public DateTime TripEndDate { get; set; }
         public string TripDestination { get; set; }   //  The overall location
       
         public List<TripAttendee> TripAttendees { get { return tripAttendees; } }
