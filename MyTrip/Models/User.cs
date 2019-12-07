@@ -14,5 +14,7 @@ namespace MyTrip.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Bio { get; set; }
+
+        //TODO: User should have a list of trips that they are hosting
     }
 }
