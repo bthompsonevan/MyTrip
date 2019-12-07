@@ -19,5 +19,10 @@ namespace MyTrip.Repositories
             trips.Add(trip);           
         }
 
+        public void AddTripToUser(User user, Trip trip)
+        {
+
+        }
+
     }
 }

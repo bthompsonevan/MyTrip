@@ -11,6 +11,7 @@ namespace MyTrip.Repositories
     {
         List<Trip> Trips { get; }
         void AddTrip(Trip trip);
+        void AddTripToUser(User user, Trip trip);
 
     }
 }

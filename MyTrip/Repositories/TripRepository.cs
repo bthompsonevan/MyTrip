@@ -29,5 +29,10 @@ namespace MyTrip.Repositories
             context.Trips.Update(trip);
             context.SaveChanges();
         }
+
+        public void AddTripToUser(User user, Trip trip)
+        {
+
+        }
     }
 }
