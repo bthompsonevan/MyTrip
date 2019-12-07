@@ -55,5 +55,14 @@ namespace MyTrip.Controllers
         {
             return View();
         }
+        /* **********************************
+        *     ADD TRIP ACTION METHODS      *     
+        ************************************/
+        public ViewResult AddTrip()
+        {
+            return View();
+        }
+
+
     }
 }
