@@ -33,6 +33,20 @@ namespace MyTrip.Controllers
         public ViewResult ContactUs()
         {
             return View();
+        }            
+        /* **********************************
+         *  TRIP ATTENDEE ACTION METHODS    *     //Trying this out to see if it helps visability
+         ************************************/
+        public ViewResult InviteAttendee()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult InviteAttendee(Trip trip)
+        {
+            //TODO: decide where to go after TripAttendee has been added
+            return View();
         }
     }
 }
