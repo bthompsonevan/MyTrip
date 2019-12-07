@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MyTrip.Repositories;
 using MyTrip.Models;
 
 namespace MyTrip.Repositories
 {
-    public class ITripRepository
+    public interface ITripRepository
     {
-
-       
+        List<Trip> Trips { get; }
+        void AddTrip(Trip trip);
 
     }
 }

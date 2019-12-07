@@ -6,7 +6,7 @@ using MyTrip.Models;
 
 namespace MyTrip.Repositories
 {
-    public class TripRepository
+    public class TripRepository : ITripRepository
     {
         private AppDbContext context;
 
