@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using MyTrip.Repositories;
+
 
 namespace MyTrip
 {
@@ -17,6 +19,9 @@ namespace MyTrip
         {
             //Added MVC services to empty project
             services.AddMvc();
+
+            //Dependency Injection
+            services.AddTransient<ITripRepository, TripRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +37,8 @@ namespace MyTrip
 
             //deleted Hello World code and added this code
             app.UseMvcWithDefaultRoute();
+
+          
 
             //Changed the routing of default locations so it will run with UserHomeController and UserHomeScreen view
             app.UseMvc(routes =>
