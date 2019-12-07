@@ -10,6 +10,7 @@ namespace MyTrip.Repositories
     {
         private AppDbContext context;
 
+        public List<User> Users { get { return context.Users.ToList(); } }
         public List<Trip> Trips { get { return context.Trips.ToList(); } }
        
         public TripRepository(AppDbContext appDbContext)
@@ -31,6 +32,13 @@ namespace MyTrip.Repositories
         }
 
         public void AddTripToUser(User user, Trip trip)
+        {
+            user.UserTrips.Add(trip);
+            context.Users.Update(user);
+            context.SaveChanges();
+        }
+
+        public void AddTripStopToTrip(Trip trip, TripStop tripStop)
         {
 
         }
