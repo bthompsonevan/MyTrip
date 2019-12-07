@@ -48,5 +48,12 @@ namespace MyTrip.Controllers
             //TODO: decide where to go after TripAttendee has been added
             return View();
         }
+        /* **********************************
+        *   CURRENT TRIP ACTION METHODS     *     
+        ************************************/
+        public ViewResult CurrentTrips()
+        {
+            return View();
+        }
     }
 }
