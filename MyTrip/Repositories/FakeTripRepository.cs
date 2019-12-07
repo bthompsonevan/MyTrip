@@ -27,9 +27,9 @@ namespace MyTrip.Repositories
             
         }
 
-        public void AddTripStopToTrip(Trip trip, TripStop tripStop)
+        public void AddStopToTrip(Trip trip, TripStop tripStop)
         {
-
+            trip.TripStops.Add(tripStop);
         }
 
     }
