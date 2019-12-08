@@ -24,9 +24,9 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.UserTrips.Count > 0)
+            @if (Model.trips.Count > 0)
             {
-                @foreach (Trip uT in Model.UserTrips)
+                @foreach (Trip uT in Model.trips)
                 {
                     <tr>
                         <td>@uT.TripName</td>
