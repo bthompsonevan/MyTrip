@@ -19,9 +19,9 @@ namespace MyTrip.Controllers
             repo = r;
         }
 
-        public IActionResult UserHomeScreen()
+        public IActionResult UserHomeScreen(User currentUser)
         {            
-            return View();
+            return View(currentUser);
         }
        
         public ViewResult UserLogInScreen()
@@ -37,7 +37,7 @@ namespace MyTrip.Controllers
             if (userName == passedValue)
             {
                 
-                User currentUser = repo.GetUserByUserName(userName);
+                currentUser = repo.GetUserByUserName(userName);
                 
                 return View("UserHomeScreen", currentUser);
             }
@@ -85,10 +85,10 @@ namespace MyTrip.Controllers
         /* **********************************
         *   CURRENT TRIP ACTION METHODS     *     
         ************************************/
-        public ViewResult CurrentTrips(User currentUser)
+        public ViewResult CurrentTrips()
         {
-
-            return View(currentUser);
+            ViewBag.Obj = currentUser;
+            return View();
         }
 
         /* **********************************
@@ -100,11 +100,12 @@ namespace MyTrip.Controllers
         }
 
         [HttpPost]
-        public ViewResult AddTrip(Trip trip, User user)
+        public ViewResult AddTrip(Trip trip, User currentUser)
         {
-            repo.AddTrip(trip);
-            user.UserTrips.Add(trip);
-            return View("UserHomeScreen", user);
+            //repo.AddTrip(trip);
+            repo.AddTripToUser(currentUser, trip);
+            currentUser.UserTrips.Add(trip);
+            return View("UserHomeScreen", currentUser);
         }
 
      

@@ -7,7 +7,7 @@ namespace MyTrip.Models
 {
     public class User
     {
-        private List<Trip> userTrips = new List<Trip>();
+        private List<Trip> Trips = new List<Trip>();
 
         public int UserID { get; set; }
         public string UserName { get; set; }
@@ -17,7 +17,6 @@ namespace MyTrip.Models
         public string Email { get; set; }
         public string Bio { get; set; }
 
-        //TODO: User should have a list of trips that they are hosting
-        public List<Trip> UserTrips { get { return userTrips; } }
+        public List<Trip> trips { get { return trips; } }
     }
 }
