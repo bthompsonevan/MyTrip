@@ -18,17 +18,36 @@ namespace MyTrip.Controllers
 
         public IActionResult UserHomeScreen()
         {
+            
             return View();
         }
-
-        public IActionResult UserLogInScreen()
+        
+        public ViewResult UserLogInScreen()
         {
             return View();
         }
 
         [HttpPost]
+        public ViewResult UserLogInScreen(string userName)
+        {
+            string passedValue = repo.GetUserByUserName(userName).UserName;
+
+            if (userName == passedValue)
+            {
+                User user = repo.GetUserByUserName(userName);
+                return View("UserHomeScreen", user);
+            }
+            else
+            {
+                return View("CreateUser");
+            }
+                
+        }
+
+        [HttpPost]
         public ViewResult UserLogInScreen(User user)
         {
+            //TODO: If time add logic that will match the username and then go to that page
             return View("UserHomeScreen", user);
         }            
 
@@ -48,7 +67,7 @@ namespace MyTrip.Controllers
         public ViewResult CreateUser(User user)
         {
             repo.AddUser(user);
-            return View();
+            return View("UserHomeScreen", user);
         }
 
         /* **********************************

@@ -13,8 +13,10 @@ namespace MyTrip.Repositories
         List<Trip> Trips { get; }
         void AddUser(User user);
         void AddTrip(Trip trip);
+        User GetUserByUserName(string userName);
         void AddTripToUser(User user, Trip trip);
         void AddStopToTrip(Trip trip, TripStop tripStop);
         void AddAttendeeToTrip(Trip trip, TripAttendee tripAttendee);
+
     }
 }

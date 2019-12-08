@@ -24,6 +24,13 @@ namespace MyTrip.Repositories
             context.SaveChanges();
         }
 
+        public User GetUserByUserName(string userName)
+        {
+            User user;
+            user = context.Users.First(b => b.UserName == userName);
+            return user;
+        }
+
         public void AddTrip(Trip trip)
         {
             context.Trips.Add(trip);

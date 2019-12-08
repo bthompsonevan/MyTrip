@@ -30,6 +30,13 @@ namespace MyTrip.Repositories
             
         }
 
+        public User GetUserByUserName(string userName)
+        {
+            User user;
+            user = Users.First(b => b.UserName == userName);
+            return user;
+        }
+
         public void AddStopToTrip(Trip trip, TripStop tripStop)
         {
             trip.TripStops.Add(tripStop);

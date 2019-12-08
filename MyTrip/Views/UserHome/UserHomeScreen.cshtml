@@ -1,17 +1,46 @@
-﻿@*
-    
+﻿@model User
+
+@*
+
 *@
 @{
     Layout = "_Layout";
 }
 
-<h3>User: </h3>
-</br>
-<h3>Bio: </h3>
-</br>
-</br>
-
+<h3>User Name: @Model.UserName</h3>
+<br />
+<h3>Bio: @Model.Bio</h3>
+<br />
+<br />
 
 <div class="text-center"><h2>Upcomming Trips!</h2></div>
+<br />
+<div class="tex-center">
+    <table class="trip-table">
+        <thead>
+            <tr>
+                <th>Trip Name</th>                
+                <th>Trip Desitination</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.UserTrips.Count > 0)
+            {
+                @foreach (Trip uT in Model.UserTrips)
+                {
+                    <tr>
+                        <td>@uT.TripName</td>
+                        <td>@uT.TripDestination</td>
+                    </tr>
+                }
+
+            }
+
+
+        </tbody>
+    </table>
+
+
+</div>
 
 <!--use loop to iterate through future trips-->
