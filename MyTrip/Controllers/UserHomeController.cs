@@ -10,6 +10,9 @@ namespace MyTrip.Controllers
 {
     public class UserHomeController : Controller
     {
+        //User that can be passed around to the differnt views to act as a "session"
+        User currentUser;
+
         ITripRepository repo;
         public UserHomeController(ITripRepository r)
         {
@@ -33,8 +36,10 @@ namespace MyTrip.Controllers
 
             if (userName == passedValue)
             {
-                User user = repo.GetUserByUserName(userName);
-                return View("UserHomeScreen", user);
+                
+                User currentUser = repo.GetUserByUserName(userName);
+                
+                return View("UserHomeScreen", currentUser);
             }
             else
             {
@@ -80,9 +85,10 @@ namespace MyTrip.Controllers
         /* **********************************
         *   CURRENT TRIP ACTION METHODS     *     
         ************************************/
-        public ViewResult CurrentTrips()
+        public ViewResult CurrentTrips(User currentUser)
         {
-            return View();
+
+            return View(currentUser);
         }
 
         /* **********************************
