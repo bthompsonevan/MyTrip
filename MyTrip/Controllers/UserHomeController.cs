@@ -47,7 +47,7 @@ namespace MyTrip.Controllers
         [HttpPost]
         public ViewResult CreateUser(User user)
         {
-            
+            repo.AddUser(user);
             return View();
         }
 
