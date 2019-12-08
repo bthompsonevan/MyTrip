@@ -110,7 +110,7 @@ namespace MyTrip.Migrations
             modelBuilder.Entity("MyTrip.Models.Trip", b =>
                 {
                     b.HasOne("MyTrip.Models.User")
-                        .WithMany("trips")
+                        .WithMany("Trips")
                         .HasForeignKey("UserID");
                 });
 

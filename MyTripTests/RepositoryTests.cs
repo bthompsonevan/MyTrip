@@ -96,7 +96,7 @@ namespace MyTripTests
                 TripDestination = "Canada"
             });
             //Assert
-            Assert.Equal("Trip Test 1", user.UserTrips[0].TripName);
+            Assert.Equal("Trip Test 1", user.Trips[0].TripName);
         }
         [Fact]
         public void AddTripToUserTestStartDateField()
@@ -113,7 +113,7 @@ namespace MyTripTests
                 TripDestination = "Canada"
             });
             //Assert
-            Assert.Equal(DateTime.Parse("01 / 01 / 1990"), user.UserTrips[0].TripStartDate);
+            Assert.Equal(DateTime.Parse("01 / 01 / 1990"), user.Trips[0].TripStartDate);
         }
         [Fact]
         public void AddTripToUserTestEndDateField()
@@ -130,7 +130,7 @@ namespace MyTripTests
                 TripDestination = "Canada"
             });
             //Assert
-            Assert.Equal(DateTime.Parse("01 / 02 / 1990"), user.UserTrips[0].TripEndDate);
+            Assert.Equal(DateTime.Parse("01 / 02 / 1990"), user.Trips[0].TripEndDate);
         }
         [Fact]
         public void AddTripToUserTestTripDestinationField()
@@ -147,7 +147,7 @@ namespace MyTripTests
                 TripDestination = "Canada"
             });
             //Assert
-            Assert.Equal("Canada", user.UserTrips[0].TripDestination);
+            Assert.Equal("Canada", user.Trips[0].TripDestination);
         }
 
         /**************************
@@ -228,6 +228,151 @@ namespace MyTripTests
             //Assert
             Assert.Equal(DateTime.Parse("01 / 02 / 1990"), trip.TripStops[0].StopEnd);
         }
+
+        /****************
+        * ADD USER TEST *
+        ****************/
+
+        [Fact]
+        public void AddUserTestUserNameField()
+        {
+            // Arrange
+            var repo = new FakeTripRepository();
+            //Act
+            repo.AddUser(new User()
+            {
+               UserName = "BernieD",
+               Password = "Treatos",
+               FirstName = "Bernie",
+               LastName = "Doodle",
+               Email = "bDoodle@gmail.com",
+               Bio = "I am puppers it is time for suppers"
+            });
+            //Assert
+            Assert.Equal("BernieD", repo.Users[0].UserName);
+        }
+
+        [Fact]
+        public void AddUserPasswordField()
+        {
+            // Arrange
+            var repo = new FakeTripRepository();
+            //Act
+            repo.AddUser(new User()
+            {
+                UserName = "BernieD",
+                Password = "Treatos",
+                FirstName = "Bernie",
+                LastName = "Doodle",
+                Email = "bDoodle@gmail.com",
+                Bio = "I am puppers it is time for suppers"
+            });
+            //Assert
+            Assert.Equal("Treatos", repo.Users[0].Password);
+        }
+
+        [Fact]
+        public void AddUserTestFirstNameField()
+        {
+            // Arrange
+            var repo = new FakeTripRepository();
+            //Act
+            repo.AddUser(new User()
+            {
+                UserName = "BernieD",
+                Password = "Treatos",
+                FirstName = "Bernie",
+                LastName = "Doodle",
+                Email = "bDoodle@gmail.com",
+                Bio = "I am puppers it is time for suppers"
+            });
+            //Assert
+            Assert.Equal("Bernie", repo.Users[0].FirstName);
+        }
+
+        [Fact]
+        public void AddUserTestLastNameField()
+        {
+            // Arrange
+            var repo = new FakeTripRepository();
+            //Act
+            repo.AddUser(new User()
+            {
+                UserName = "BernieD",
+                Password = "Treatos",
+                FirstName = "Bernie",
+                LastName = "Doodle",
+                Email = "bDoodle@gmail.com",
+                Bio = "I am puppers it is time for suppers"
+            });
+            //Assert
+            Assert.Equal("Doodle", repo.Users[0].LastName);
+        }
+
+        [Fact]
+        public void AddUserTestEmailField()
+        {
+            // Arrange
+            var repo = new FakeTripRepository();
+            //Act
+            repo.AddUser(new User()
+            {
+                UserName = "BernieD",
+                Password = "Treatos",
+                FirstName = "Bernie",
+                LastName = "Doodle",
+                Email = "bDoodle@gmail.com",
+                Bio = "I am puppers it is time for suppers"
+            });
+            //Assert
+            Assert.Equal("bDoodle@gmail.com", repo.Users[0].Email);
+        }
+
+        [Fact]
+        public void AddUserBioField()
+        {
+            // Arrange
+            var repo = new FakeTripRepository();
+            //Act
+            repo.AddUser(new User()
+            {
+                UserName = "BernieD",
+                Password = "Treatos",
+                FirstName = "Bernie",
+                LastName = "Doodle",
+                Email = "bDoodle@gmail.com",
+                Bio = "Ball is life"
+            });
+            //Assert
+            Assert.Equal("Ball is life", repo.Users[0].Bio);
+        }
+
+        /******************************/
+        [Fact]
+        public void GetUserByUserName()
+        {
+            //Arrange
+            FakeTripRepository repo = new FakeTripRepository();
+
+            //Act
+            repo.AddUser(new User()
+            {
+                UserName = "BernieD",
+                Password = "Treatos",
+                FirstName = "Bernie",
+                LastName = "Doodle",
+                Email = "bDoodle@gmail.com",
+                Bio = "Ball is life"
+            });
+
+            User user = repo.GetUserByUserName("BernieD");
+
+            //Assert
+            Assert.Equal("Bernie", user.FirstName);
+        }
+
+
+
 
 
 
