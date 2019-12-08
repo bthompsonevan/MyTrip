@@ -24,6 +24,7 @@ namespace MyTrip.Repositories
             context.SaveChanges();
         }
 
+       
         public User GetUserByUserName(string userName)
         {
             User user;

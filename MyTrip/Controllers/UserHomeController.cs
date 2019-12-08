@@ -17,8 +17,7 @@ namespace MyTrip.Controllers
         }
 
         public IActionResult UserHomeScreen()
-        {
-            
+        {            
             return View();
         }
        
@@ -95,10 +94,11 @@ namespace MyTrip.Controllers
         }
 
         [HttpPost]
-        public ViewResult AddTrip(Trip trip)
+        public ViewResult AddTrip(Trip trip, User user)
         {
             repo.AddTrip(trip);
-            return View("UserHomeScreen");
+            user.UserTrips.Add(trip);
+            return View("UserHomeScreen", user);
         }
 
      

@@ -1,4 +1,4 @@
-﻿@model MyTrip.Models.User
+﻿@model User
 
 @{
     Layout = "_Layout";
@@ -22,13 +22,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>test1</td>
-                <td>test1</td>
-                <td>test1</td>
-                <td>test1</td>
-                <td>test1</td>
-            </tr>
+              @if (@Model.UserTrips.Count > 0)
+              {
+                @foreach (Trip uT in Model.UserTrips)
+                      {
+                    <tr>
+                        <td>@uT.TripName</td>
+                        <td>@uT.TripStartDate</td>
+                        <td>@uT.TripEndDate</td>
+                        <td>@uT.TripDestination</td>
+
+                        @foreach (TripStop tS in uT.TripStops)
+                        {
+                            <td>@tS.StopName</td>
+                        }
+                    </tr>
+                }
+
+            }
         </tbody>
     </table>
 </div>
