@@ -30,19 +30,29 @@ namespace MyTrip.Controllers
         public ViewResult UserLogInScreen(User user)
         {
             return View("UserHomeScreen", user);
-        }
-
-        public IActionResult CreateUser()
-        {
-            return View();
-        }
+        }            
 
         public ViewResult ContactUs()
         {
             return View();
-        }            
+        }
+
         /* **********************************
-         *  TRIP ATTENDEE ACTION METHODS    *     //Trying this out to see if it helps visability
+        *   CURRENT TRIP ACTION METHODS     *     //Trying this out to see if it helps visability
+        ************************************/
+        public ViewResult CreateUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult CreateUser(User user)
+        {
+            
+            return View();
+        }
+
+        /* **********************************
+         *  TRIP ATTENDEE ACTION METHODS    *     
          ************************************/
         public ViewResult InviteAttendee()
         {

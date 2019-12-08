@@ -18,6 +18,12 @@ namespace MyTrip.Repositories
             context = appDbContext;
         }
 
+        public void AddUser(User user)
+        {
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
+
         public void AddTrip(Trip trip)
         {
             context.Trips.Add(trip);

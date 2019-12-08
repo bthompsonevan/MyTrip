@@ -14,7 +14,10 @@ namespace MyTrip.Repositories
         private List<Trip> trips = new List<Trip>();
         public List<Trip> Trips { get { return trips; } }
 
-              
+        public void AddUser(User user)
+        {
+           users.Add(user);            
+        }
 
         public void AddTrip(Trip trip)
         {
