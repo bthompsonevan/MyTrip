@@ -7,12 +7,23 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using MyTrip.Repositories;
+using MyTrip.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 
 
 namespace MyTrip
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -22,6 +33,10 @@ namespace MyTrip
 
             //Dependency Injection
             services.AddTransient<ITripRepository, TripRepository>();
+
+            //AppDbSuff
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
+               Configuration["ConnectionString:LocalDbString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
