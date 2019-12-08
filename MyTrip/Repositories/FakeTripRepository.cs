@@ -26,7 +26,7 @@ namespace MyTrip.Repositories
 
         public void AddTripToUser(User user, Trip trip)
         {
-            user.UserTrips.Add(trip);           
+            user.Trips.Add(trip);           
             
         }
 

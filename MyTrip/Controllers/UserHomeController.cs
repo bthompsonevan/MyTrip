@@ -104,7 +104,7 @@ namespace MyTrip.Controllers
         {
             //repo.AddTrip(trip);
             repo.AddTripToUser(currentUser, trip);
-            currentUser.UserTrips.Add(trip);
+            currentUser.Trips.Add(trip);
             return View("UserHomeScreen", currentUser);
         }
 

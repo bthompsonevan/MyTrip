@@ -7,7 +7,7 @@ namespace MyTrip.Models
 {
     public class User
     {
-        private List<Trip> Trips = new List<Trip>();
+        private List<Trip> trips = new List<Trip>();
 
         public int UserID { get; set; }
         public string UserName { get; set; }
@@ -17,6 +17,6 @@ namespace MyTrip.Models
         public string Email { get; set; }
         public string Bio { get; set; }
 
-        public List<Trip> trips { get { return trips; } }
+        public List<Trip> Trips { get { return trips; } }
     }
 }
