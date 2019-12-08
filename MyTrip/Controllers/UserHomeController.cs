@@ -64,7 +64,8 @@ namespace MyTrip.Controllers
         public ViewResult CreateUser(User user)
         {
             repo.AddUser(user);
-            return View("UserHomeScreen", user);
+            currentUser = user;
+            return View("UserHomeScreen", currentUser);
         }
 
         /* **********************************
@@ -87,7 +88,7 @@ namespace MyTrip.Controllers
         ************************************/
         public ViewResult CurrentTrips()
         {
-            ViewBag.Obj = currentUser;
+            
             return View();
         }
 
@@ -102,8 +103,7 @@ namespace MyTrip.Controllers
         [HttpPost]
         public ViewResult AddTrip(Trip trip, User currentUser)
         {
-            //repo.AddTrip(trip);
-            repo.AddTripToUser(currentUser, trip);
+                       
             currentUser.Trips.Add(trip);
             return View("UserHomeScreen", currentUser);
         }

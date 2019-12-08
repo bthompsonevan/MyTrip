@@ -10,6 +10,7 @@ namespace MyTrip.Repositories
     {
         private AppDbContext context;
 
+        public User currentUser;
         public List<User> Users { get { return context.Users.ToList(); } }
         public List<Trip> Trips { get { return context.Trips.ToList(); } }
        
@@ -20,10 +21,10 @@ namespace MyTrip.Repositories
 
         public void AddUser(User user)
         {
+            currentUser = user;
             context.Users.Add(user);
             context.SaveChanges();
         }
-
        
         public User GetUserByUserName(string userName)
         {
