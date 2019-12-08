@@ -21,7 +21,7 @@ namespace MyTrip.Controllers
             
             return View();
         }
-        
+       
         public ViewResult UserLogInScreen()
         {
             return View();
@@ -42,14 +42,7 @@ namespace MyTrip.Controllers
                 return View("CreateUser");
             }
                 
-        }
-
-        [HttpPost]
-        public ViewResult UserLogInScreen(User user)
-        {
-            //TODO: If time add logic that will match the username and then go to that page
-            return View("UserHomeScreen", user);
-        }            
+        }        
 
         public ViewResult ContactUs()
         {
@@ -57,7 +50,7 @@ namespace MyTrip.Controllers
         }
 
         /* **********************************
-        *   CURRENT TRIP ACTION METHODS     *     //Trying this out to see if it helps visability
+        *   CREATE USER ACTION METHODS     *     //Trying this out to see if it helps visability
         ************************************/
         public ViewResult CreateUser()
         {
