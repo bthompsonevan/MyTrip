@@ -90,11 +90,23 @@ namespace MyTrip.Controllers
         /* **********************************
         *   CURRENT TRIP ACTION METHODS     *     
         ************************************/
-        public ViewResult CurrentTrips(User user, Trip trip)
+        public ViewResult CurrentTrips(User user, List<Trip> usersTrips)
         {
             user = repo.GetUserByUserName(repo.Users[0].UserName);
+            int usersID = user.UserID;
+            usersTrips = repo.Trips;
 
-            return View(user);
+            foreach(Trip t in usersTrips.ToList())
+            {
+                if(usersID == t.TripID)
+                {
+                    usersTrips.Add(t);
+                }
+            }
+            
+
+
+            return View(usersTrips);
         }
 
         /* **********************************

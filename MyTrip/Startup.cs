@@ -46,7 +46,7 @@ namespace MyTrip
                    Configuration["ConnectionString:LocalDbString"]));
             } else if (environment.IsProduction())
             {
-                services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:MySqlConnection"]));
+                services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:LocalDbString"]));
             }
 
            

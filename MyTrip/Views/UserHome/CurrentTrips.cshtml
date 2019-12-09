@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model List<Trip> 
 
 @{
     Layout = "_Layout";
@@ -24,7 +24,7 @@
         <tbody>
                       <!--   When user is being passed it it does not have trips  -->
                 <!-- Putting a breakpoint prior to user being passed in it does contain a trip-->
-                @foreach (Trip uT in Model.Trips)
+                @foreach (Trip uT in Model)
                       {
                     <tr>
                         <td>@uT.TripName</td>
