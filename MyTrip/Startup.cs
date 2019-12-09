@@ -13,13 +13,18 @@ using Microsoft.Extensions.Configuration;
 
 
 
+
+
 namespace MyTrip
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IHostingEnvironment environment;
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            environment = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -34,9 +39,17 @@ namespace MyTrip
             //Dependency Injection
             services.AddTransient<ITripRepository, TripRepository>();
 
-            //AppDbSuff
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-               Configuration["ConnectionString:LocalDbString"]));
+            if (environment.IsDevelopment())
+            {
+                //AppDbSuff
+                services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
+                   Configuration["ConnectionString:LocalDbString"]));
+            } else if (environment.IsProduction())
+            {
+                services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:MySqlConnection"]));
+            }
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

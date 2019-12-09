@@ -10,8 +10,8 @@ using MyTrip.Models;
 namespace MyTrip.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191208061946_Initial")]
-    partial class Initial
+    [Migration("20191209034222_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
