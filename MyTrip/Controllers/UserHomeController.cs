@@ -17,10 +17,26 @@ namespace MyTrip.Controllers
             repo = r;
         }
 
+        //, List<Trip> usersTrips  was experimenting with this earlier
         public IActionResult UserHomeScreen(User user)
         {
             //Once we learn logins update this code so it is not semi-hardcoded. 
             user = repo.GetUserByUserName(repo.Users[0].UserName);
+            //int usersID = user.UserID;
+            //usersTrips = repo.Trips;
+            //List<Trip> updatedTrips = new List<Trip>();
+
+            //foreach (Trip t in usersTrips.ToList())
+            //{
+
+            //    if (usersID == t.TripID)
+            //    {
+            //        updatedTrips.Add(t);
+            //    }
+            //}
+
+           // ViewBag.updatedTrips = updatedTrips;
+
             return View(user);
         }
        
@@ -95,18 +111,18 @@ namespace MyTrip.Controllers
             user = repo.GetUserByUserName(repo.Users[0].UserName);
             int usersID = user.UserID;
             usersTrips = repo.Trips;
+            List<Trip> updatedTrips = new List<Trip>();
 
             foreach(Trip t in usersTrips.ToList())
             {
+                
                 if(usersID == t.TripID)
                 {
-                    usersTrips.Add(t);
+                    updatedTrips.Add(t);
                 }
-            }
+            }         
             
-
-
-            return View(usersTrips);
+            return View(updatedTrips);
         }
 
         /* **********************************
