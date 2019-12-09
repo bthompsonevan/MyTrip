@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using MyTrip.Models;
 
+
 namespace MyTrip.Repositories
 {
     public class TripRepository : ITripRepository
     {
         private AppDbContext context;
 
-        public User currentUser;
+       
         public List<User> Users { get { return context.Users.ToList(); } }
         public List<Trip> Trips { get { return context.Trips.ToList(); } }
        
@@ -21,7 +22,6 @@ namespace MyTrip.Repositories
 
         public void AddUser(User user)
         {
-            currentUser = user;
             context.Users.Add(user);
             context.SaveChanges();
         }
@@ -30,6 +30,7 @@ namespace MyTrip.Repositories
         {
             User user;
             user = context.Users.First(b => b.UserName == userName);
+                   
             return user;
         }
 

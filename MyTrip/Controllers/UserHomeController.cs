@@ -10,18 +10,18 @@ namespace MyTrip.Controllers
 {
     public class UserHomeController : Controller
     {
-        //User that can be passed around to the differnt views to act as a "session"
-        User currentUser;
-
+        
         ITripRepository repo;
         public UserHomeController(ITripRepository r)
         {
             repo = r;
         }
 
-        public IActionResult UserHomeScreen(User currentUser)
-        {            
-            return View(currentUser);
+        public IActionResult UserHomeScreen(User user)
+        {
+            //Once we learn logins update this code so it is not semi-hardcoded. 
+            user = repo.GetUserByUserName(repo.Users[0].UserName);
+            return View(user);
         }
        
         public ViewResult UserLogInScreen()
@@ -37,9 +37,9 @@ namespace MyTrip.Controllers
             if (userName == passedValue)
             {
                 
-                currentUser = repo.GetUserByUserName(userName);
+                User user = repo.GetUserByUserName(userName);
                 
-                return View("UserHomeScreen", currentUser);
+                return View("UserHomeScreen", user);
             }
             else
             {
@@ -64,8 +64,7 @@ namespace MyTrip.Controllers
         public ViewResult CreateUser(User user)
         {
             repo.AddUser(user);
-            currentUser = user;
-            return View("UserHomeScreen", currentUser);
+            return View("UserHomeScreen", user);
         }
 
         /* **********************************
@@ -73,23 +72,29 @@ namespace MyTrip.Controllers
          ************************************/
         public ViewResult InviteAttendee()
         {
+                      
             return View();
         }
 
         [HttpPost]
-        public ViewResult InviteAttendee(Trip trip)
+        public ViewResult InviteAttendee(Trip trip, User user, TripAttendee tripAttendee)
         {
-            //TODO: decide where to go after TripAttendee has been added
-            return View();
+            
+            user = repo.GetUserByUserName(repo.Users[0].UserName);
+            //TODO: get logic to associate a trip
+            //Getting an out of range exception error  --- I think it is not transferring the trips again
+            //repo.AddAttendeeToTrip(user.Trips[0], tripAttendee);
+            return View("UserHomeScreen", user);
         }
 
         /* **********************************
         *   CURRENT TRIP ACTION METHODS     *     
         ************************************/
-        public ViewResult CurrentTrips()
+        public ViewResult CurrentTrips(User user, Trip trip)
         {
-            
-            return View();
+            user = repo.GetUserByUserName(repo.Users[0].UserName);
+
+            return View(user);
         }
 
         /* **********************************
@@ -101,11 +106,12 @@ namespace MyTrip.Controllers
         }
 
         [HttpPost]
-        public ViewResult AddTrip(Trip trip, User currentUser)
+        public ViewResult AddTrip(Trip trip, User user)
         {
-                       
-            currentUser.Trips.Add(trip);
-            return View("UserHomeScreen", currentUser);
+            user = repo.GetUserByUserName(repo.Users[0].UserName);
+            user.Trips.Add(trip);
+            repo.AddTripToUser(user, trip);
+            return View("UserHomeScreen", user);
         }
 
      

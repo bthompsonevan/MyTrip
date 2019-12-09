@@ -5,7 +5,7 @@
     ViewData["Title"] = "CurrentTrips";
 }
 
-<h3>Logged In As: </h3> <h6> @Model.UserName</h6>
+
 <div class="text-center">
     <h1>Current Trip Details</h1>
 </div>
@@ -22,8 +22,8 @@
             </tr>
         </thead>
         <tbody>
-              @if (@Model.Trips.Count > 0)
-              {
+                      <!--   When user is being passed it it does not have trips  -->
+                <!-- Putting a breakpoint prior to user being passed in it does contain a trip-->
                 @foreach (Trip uT in Model.Trips)
                       {
                     <tr>
@@ -37,7 +37,7 @@
                             <td>@tS.StopName</td>
                         }
                     </tr>
-                }
+                
 
             }
         </tbody>
