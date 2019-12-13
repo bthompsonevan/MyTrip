@@ -10,7 +10,7 @@ using MyTrip.Models;
 namespace MyTrip.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191209034222_initial")]
+    [Migration("20191213222747_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,7 @@ namespace MyTrip.Migrations
 
                     b.Property<DateTime>("TripStartDate");
 
-                    b.Property<int?>("UserID");
+                    b.Property<int>("UserID");
 
                     b.HasKey("TripID");
 
@@ -113,7 +113,8 @@ namespace MyTrip.Migrations
                 {
                     b.HasOne("MyTrip.Models.User")
                         .WithMany("Trips")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MyTrip.Models.TripAttendee", b =>

@@ -22,22 +22,18 @@ namespace MyTrip.Controllers
         {
             //Once we learn logins update this code so it is not semi-hardcoded. 
             user = repo.GetUserByUserName(repo.Users[0].UserName);
-            //int usersID = user.UserID;
-            //usersTrips = repo.Trips;
-            //List<Trip> updatedTrips = new List<Trip>();
+            List<Trip> userTrips = new List<Trip>();
+            userTrips = repo.Trips;
 
-            //foreach (Trip t in usersTrips.ToList())
-            //{
+            foreach (Trip t in userTrips)
+            {
+                if (user.UserID == t.UserID)
+                {
+                    user.Trips.Add(t);
+                }
+            }
 
-            //    if (usersID == t.TripID)
-            //    {
-            //        updatedTrips.Add(t);
-            //    }
-            //}
-
-           // ViewBag.updatedTrips = updatedTrips;
-
-            return View(user);
+            return View("UserHomeScreen", user);
         }
        
         public ViewResult UserLogInScreen()
@@ -108,20 +104,21 @@ namespace MyTrip.Controllers
         ************************************/
         public ViewResult CurrentTrips(User user, List<Trip> usersTrips)
         {
+
             user = repo.GetUserByUserName(repo.Users[0].UserName);
             int usersID = user.UserID;
             usersTrips = repo.Trips;
             List<Trip> updatedTrips = new List<Trip>();
 
-            foreach(Trip t in usersTrips.ToList())
+            foreach (Trip t in usersTrips)
             {
-                
-                if(usersID == t.TripID)
+
+                if (user.UserID == t.UserID)
                 {
                     updatedTrips.Add(t);
                 }
-            }         
-            
+            }
+
             return View(updatedTrips);
         }
 

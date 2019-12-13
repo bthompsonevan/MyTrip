@@ -33,7 +33,7 @@ namespace MyTrip.Migrations
 
                     b.Property<DateTime>("TripStartDate");
 
-                    b.Property<int?>("UserID");
+                    b.Property<int>("UserID");
 
                     b.HasKey("TripID");
 
@@ -111,7 +111,8 @@ namespace MyTrip.Migrations
                 {
                     b.HasOne("MyTrip.Models.User")
                         .WithMany("Trips")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MyTrip.Models.TripAttendee", b =>

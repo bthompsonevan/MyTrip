@@ -15,6 +15,7 @@ namespace MyTrip.Models
         public DateTime TripStartDate { get; set; }
         public DateTime TripEndDate { get; set; }
         public string TripDestination { get; set; }   //  The overall location
+        public int UserID { get; set; }
       
         public List<TripAttendee> TripAttendees { get { return tripAttendees; } }
         public List<TripStop> TripStops { get { return tripStops; } }

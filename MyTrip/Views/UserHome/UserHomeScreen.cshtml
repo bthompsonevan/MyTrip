@@ -1,5 +1,4 @@
 ﻿@model User
-
 @*
 
 *@
@@ -19,21 +18,23 @@
     <table class="trip-table">
         <thead>
             <tr>
-                <th>Trip Name</th>                
+                <th>Trip Name</th>
                 <th>Trip Desitination</th>
             </tr>
         </thead>
         <tbody>
             
-                @foreach (Trip uT in Model.Trips)
-                {
-                    <tr>
-                        <td>@uT.TripName</td>
-                        <td>@uT.TripDestination</td>
-                    </tr>
-                }
-
+            @foreach (Trip uT in Model.Trips)
+            {
+                <tr>
+                    <td>@uT.TripName</td>
+                    <td>@uT.TripDestination</td>
+                </tr>
+            }
             
+
+
+
 
 
         </tbody>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MyTrip.Models;
 
 
@@ -12,6 +13,7 @@ namespace MyTrip.Repositories
         private AppDbContext context;
 
        
+
         public List<User> Users { get { return context.Users.ToList(); } }
         public List<Trip> Trips { get { return context.Trips.ToList(); } }
        

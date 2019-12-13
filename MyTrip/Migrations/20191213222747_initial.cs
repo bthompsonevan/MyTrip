@@ -36,7 +36,7 @@ namespace MyTrip.Migrations
                     TripStartDate = table.Column<DateTime>(nullable: false),
                     TripEndDate = table.Column<DateTime>(nullable: false),
                     TripDestination = table.Column<string>(nullable: true),
-                    UserID = table.Column<int>(nullable: true)
+                    UserID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,7 +46,7 @@ namespace MyTrip.Migrations
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
