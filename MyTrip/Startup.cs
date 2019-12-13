@@ -46,14 +46,14 @@ namespace MyTrip
                    Configuration["ConnectionString:LocalDbString"]));
             } else if (environment.IsProduction())
             {
-                services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:LocalDbString"]));
+                services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:MySqlConnection"]));
             }
 
            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext context)
         {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
@@ -66,7 +66,10 @@ namespace MyTrip
             //deleted Hello World code and added this code
             app.UseMvcWithDefaultRoute();
 
-          
+            // Create or update the database and apply migrations.
+            context.Database.Migrate();
+
+
 
             //Changed the routing of default locations so it will run with UserHomeController and UserHomeScreen view
             app.UseMvc(routes =>
