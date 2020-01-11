@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace MyTrip.Models
 {
@@ -11,8 +10,6 @@ namespace MyTrip.Models
         private List<Trip> trips = new List<Trip>();
 
         public int UserID { get; set; }
-        [Required]
-        [StringLength(20, MinimumLength = 3)]
         public string UserName { get; set; }
         public string Password { get; set; }
         public string FirstName { get; set; }

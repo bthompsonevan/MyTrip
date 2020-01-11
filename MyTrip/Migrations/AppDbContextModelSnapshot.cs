@@ -100,9 +100,7 @@ namespace MyTrip.Migrations
 
                     b.Property<string>("Password");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                    b.Property<string>("UserName");
 
                     b.HasKey("UserID");
 
