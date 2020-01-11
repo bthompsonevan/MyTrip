@@ -2,7 +2,7 @@
 
 **User Model**
 	Property | Validation
-	--------------------
+	---------|-----------
 	 UserName | Required / String Length 
 	PassWord | Required 
 	FirstName | Required / String Length
