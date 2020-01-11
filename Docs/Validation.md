@@ -1,6 +1,6 @@
 **Valdiation Performed on Project**
 
-**User Model**
+   **User Model**
 
 Property | Validation
 ---------|-----------

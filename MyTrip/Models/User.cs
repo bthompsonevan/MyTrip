@@ -15,6 +15,8 @@ namespace MyTrip.Models
         [StringLength(20, MinimumLength = 3)]
         public string UserName { get; set; }
         [Required]
+        [StringLength(15, MinimumLength = 8)]
+        //Possibly add a regex here for special characters/uppercase and lowercase requirements??
         public string Password { get; set; }
         [Required]
         [StringLength(40, MinimumLength = 2)]

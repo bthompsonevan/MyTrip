@@ -28,15 +28,18 @@
             <input asp-for="UserName" />
         </p>
         <p>
-            <label asp-for="Password">Password: </label><br />
+            <label asp-for="Password">Password: </label>
+            <div><span asp-validation-for="Password"></span></div>
             <input asp-for="Password" />
         </p>
         <p>
-            <label asp-for="Email">Email: </label><br />
+            <label asp-for="Email">Email: </label>
+            <div><span asp-validation-for="Email"></span></div>
             <input asp-for="Email" />
         </p>
         <p>
-            <label asp-for="Bio">Bio: </label><br />
+            <label asp-for="Bio">Bio: </label>
+            <div><span asp-validation-for="Bio"></span></div>
             <input asp-for="Bio" />
         </p>
         <button type="submit">Create</button>
