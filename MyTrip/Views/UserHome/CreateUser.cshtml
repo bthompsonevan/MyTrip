@@ -13,11 +13,13 @@
 <div class="text-center">
     <form asp-controller="UserHome" asp-action="CreateUser" method="post">
         <p>
-            <label asp-for="FirstName">First Name: </label><br />
+            <label asp-for="FirstName">First Name: </label>
+            <div><span asp-validation-for="FirstName"></span></div>
             <input asp-for="FirstName" />
         </p>
         <p>
-            <label asp-for="LastName">Last Name: </label><br />
+            <label asp-for="LastName">Last Name: </label>
+            <div><span asp-validation-for="LastName"></span></div>
             <input asp-for="LastName" />
         </p>
         <p>
