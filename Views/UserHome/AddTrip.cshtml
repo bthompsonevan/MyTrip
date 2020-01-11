@@ -1,0 +1,38 @@
+﻿@model MyTrip.Models.Trip
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "AddTrip";
+}
+
+<div class="text-center">
+    <h1>Add new trips</h1>
+</div>
+
+<div class="text-center">
+    <form asp-controller="UserHome" asp-action="AddTrip" method="post">
+        <p>
+            <label asp-for="TripName">Trip Name: </label><br />
+            <input asp-for="TripName" />
+        </p>
+        <p>
+            <label asp-for="TripStartDate">Trip Start Date: </label><br />
+            <input asp-for="TripStartDate" />
+        </p>
+        <p>
+            <label asp-for="TripEndDate">Trip End Date: </label><br />
+            <input asp-for="TripEndDate" />
+        </p>
+        <p>
+            <label asp-for="TripDestination">Trip Destination: </label><br />
+            <input asp-for="TripDestination" />
+        </p>
+        <p>
+            <label asp-for="TripStops">Trip Stops: </label><br />    <!--Possibly have it allow multiple entries???!!!-->
+            <input asp-for="TripStops" />
+        </p>
+        <button type="submit">Add Trip</button>
+    </form>
+</div>
+
+     

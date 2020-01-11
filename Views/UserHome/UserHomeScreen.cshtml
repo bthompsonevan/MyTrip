@@ -1,0 +1,45 @@
+﻿@model User
+@*
+
+*@
+@{
+    Layout = "_Layout";
+}
+
+<h3>User Name: @Model.UserName</h3>
+<br />
+<h3>Bio: @Model.Bio</h3>
+<br />
+<br />
+
+<div class="text-center"><h2>Upcomming Trips!</h2></div>
+<br />
+<div class="tex-center">
+    <table class="trip-table">
+        <thead>
+            <tr>
+                <th>Trip Name</th>
+                <th>Trip Desitination</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @foreach (Trip uT in Model.Trips)
+            {
+                <tr>
+                    <td>@uT.TripName</td>
+                    <td>@uT.TripDestination</td>
+                </tr>
+            }
+            
+
+
+
+
+
+        </tbody>
+    </table>
+
+
+</div>
+
