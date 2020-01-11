@@ -21,7 +21,8 @@
             <input asp-for="LastName" />
         </p>
         <p>
-            <label asp-for="UserName">User Name: </label><br />
+            <label asp-for="UserName">User Name: </label>
+            <div><span asp-validation-for="UserName"></span></div>
             <input asp-for="UserName" />
         </p>
         <p>
