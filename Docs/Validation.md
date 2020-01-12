@@ -24,12 +24,17 @@ TripStartDate | Required / DateType / DisplayFormat
 TripEndDate | Required / DateType / DisplayFormat
 TripDesitination | Required / StringLength
 
+- Validation in Views
+	- AddTrip
+
 
 ## **Controller Validation**
 
 Action Method | Validation
 --------------|-----------
 CreateUser | Validation on Model state
+AddTrip | Validation on Model State
+AddTrip | Validation on TripStartdate compared to TripEndDate
 
 	
 

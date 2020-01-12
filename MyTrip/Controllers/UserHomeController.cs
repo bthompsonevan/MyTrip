@@ -6,6 +6,7 @@ using MyTrip.Models;
 using MyTrip.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace MyTrip.Controllers
 {
     public class UserHomeController : Controller
@@ -140,10 +141,24 @@ namespace MyTrip.Controllers
         [HttpPost]
         public ViewResult AddTrip(Trip trip, User user)
         {
-            user = repo.GetUserByUserName(repo.Users[0].UserName);
-            user.Trips.Add(trip);
-            repo.AddTripToUser(user, trip);
-            return View("UserHomeScreen", user);
+            if (trip.TripStartDate > trip.TripEndDate)
+            {
+                ModelState.AddModelError(nameof(trip.TripStartDate),
+                    "Start date must happen before end date");
+            }
+
+            if (ModelState.IsValid)
+            {
+                user = repo.GetUserByUserName(repo.Users[0].UserName);
+                user.Trips.Add(trip);
+                repo.AddTripToUser(user, trip);
+                return View("UserHomeScreen", user);
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
      
