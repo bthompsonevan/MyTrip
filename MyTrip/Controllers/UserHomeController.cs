@@ -75,8 +75,15 @@ namespace MyTrip.Controllers
         [HttpPost]
         public ViewResult CreateUser(User user)
         {
-            repo.AddUser(user);
-            return View("UserHomeScreen", user);
+            if (ModelState.IsValid)
+            {
+                repo.AddUser(user);
+                return View("UserHomeScreen", user);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         /* **********************************

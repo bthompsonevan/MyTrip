@@ -1,6 +1,6 @@
 **Valdiation Performed on Project**
 
-   **User Model**
+   **User Model Validation**				
 
 Property | Validation
 ---------|-----------
@@ -10,6 +10,17 @@ FirstName | Required / String Length
 LastName | Required / String Length
 Email | Required / EmailAddress
 Bio | Required / StringLength
+
+-Valdiation in Views
+ -UserLoginInScreen
+ -CreateUser
+
+
+**Controller Validation**
+
+Action Method | Validation
+--------------|-----------
+CreateUser | Validation on Model state
 
 	
 

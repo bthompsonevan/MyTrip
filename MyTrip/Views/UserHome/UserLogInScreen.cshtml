@@ -15,10 +15,12 @@
     <form asp-controller="UserHome" asp-action="UserLogInScreen" method="post">
         <p>
             <label asp-for="UserName">User Name: </label><br />
+            <div><span asp-validation-for="UserName"></span></div>
             <input asp-for="UserName" />
         </p>
         <p>
             <label asp-for="Password">Password: </label><br />
+            <div><span asp-validation-for="Password"></span></div>
             <input asp-for="Password" />
         </p>
         <button type="submit">Log In</button>

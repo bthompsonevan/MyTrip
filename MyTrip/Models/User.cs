@@ -11,10 +11,10 @@ namespace MyTrip.Models
         private List<Trip> trips = new List<Trip>();
 
         public int UserID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "User Name is required")]
         [StringLength(20, MinimumLength = 3)]
         public string UserName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Password is required")]
         [StringLength(15, MinimumLength = 8)]
         //Possibly add a regex here for special characters/uppercase and lowercase requirements??
         public string Password { get; set; }
