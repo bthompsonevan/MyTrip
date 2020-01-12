@@ -11,9 +11,9 @@ LastName | Required / String Length
 Email | Required / EmailAddress
 Bio | Required / StringLength
 
-*Valdiation in Views
- *UserLoginInScreen
- *CreateUser
+- Valdiation in Views
+ - UserLoginInScreen
+ - CreateUser
 
 
 **Controller Validation**
