@@ -15,6 +15,15 @@ Bio | Required / StringLength
 	- UserLoginInScreen
 	- CreateUser
 
+## **Trip model Validation**
+
+Property | Validation
+---------------------
+TripName | Required / StringLength
+TripStartDate | Required / DateType / DisplayFormat
+TripEndDate | Required / DateType / DisplayFormat
+TripDesitination | Required / StringLength
+
 
 ## **Controller Validation**
 
