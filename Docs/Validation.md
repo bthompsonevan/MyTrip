@@ -18,7 +18,7 @@ Bio | Required / StringLength
 ## **Trip model Validation**
 
 Property | Validation
----------------------
+---------|-----------
 TripName | Required / StringLength
 TripStartDate | Required / DateType / DisplayFormat
 TripEndDate | Required / DateType / DisplayFormat
