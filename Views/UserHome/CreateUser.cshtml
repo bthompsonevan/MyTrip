@@ -1,7 +1,7 @@
 ﻿@model MyTrip.Models.User
 
 @{
-    Layout = "_NonUserLayout";
+    Layout = "_NonUserLayout";  // JQuery scripts added to layouts
     ViewData["Title"] = "AddUser";
 }
 <div class="text-center">
@@ -13,13 +13,11 @@
 <div class="text-center">
     <form asp-controller="UserHome" asp-action="CreateUser" method="post">
         <p>
-            <label asp-for="FirstName">First Name: </label>
-            <div><span asp-validation-for="FirstName"></span></div>
+            <label asp-for="FirstName">First Name: </label><br />
             <input asp-for="FirstName" />
         </p>
         <p>
-            <label asp-for="LastName">Last Name: </label>
-            <div><span asp-validation-for="LastName"></span></div>
+            <label asp-for="LastName">Last Name: </label><br />
             <input asp-for="LastName" />
         </p>
         <p>
@@ -28,18 +26,15 @@
             <input asp-for="UserName" />
         </p>
         <p>
-            <label asp-for="Password">Password: </label>
-            <div><span asp-validation-for="Password"></span></div>
+            <label asp-for="Password">Password: </label><br />
             <input asp-for="Password" />
         </p>
         <p>
-            <label asp-for="Email">Email: </label>
-            <div><span asp-validation-for="Email"></span></div>
+            <label asp-for="Email">Email: </label><br />
             <input asp-for="Email" />
         </p>
         <p>
-            <label asp-for="Bio">Bio: </label>
-            <div><span asp-validation-for="Bio"></span></div>
+            <label asp-for="Bio">Bio: </label><br />
             <input asp-for="Bio" />
         </p>
         <button type="submit">Create</button>

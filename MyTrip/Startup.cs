@@ -62,6 +62,7 @@ namespace MyTrip
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseStatusCodePages();
 
             //deleted Hello World code and added this code
             app.UseMvcWithDefaultRoute();

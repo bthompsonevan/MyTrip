@@ -12,19 +12,23 @@
 <div class="text-center">
     <form asp-controller="UserHome" asp-action="AddTrip" method="post">
         <p>
-            <label asp-for="TripName">Trip Name: </label><br />
+            <label asp-for="TripName">Trip Name: </label>
+            <div><span asp-validation-for="TripName"></span></div>
             <input asp-for="TripName" />
         </p>
         <p>
-            <label asp-for="TripStartDate">Trip Start Date: </label><br />
+            <label asp-for="TripStartDate">Trip Start Date: </label>
+            <div><span asp-validation-for="TripStartDate"></span></div>
             <input asp-for="TripStartDate" />
         </p>
         <p>
-            <label asp-for="TripEndDate">Trip End Date: </label><br />
+            <label asp-for="TripEndDate">Trip End Date: </label>
+            <div><span asp-validation-for="TripEndDate"></span></div>
             <input asp-for="TripEndDate" />
         </p>
         <p>
-            <label asp-for="TripDestination">Trip Destination: </label><br />
+            <label asp-for="TripDestination">Trip Destination: </label>
+            <div><span asp-validation-for="TripDestination"></span></div>
             <input asp-for="TripDestination" />
         </p>
         <p>
