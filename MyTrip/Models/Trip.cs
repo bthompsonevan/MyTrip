@@ -24,7 +24,7 @@ namespace MyTrip.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy")]
         public DateTime TripEndDate { get; set; }
         [Required]
-        [StringLength(25)]
+        [StringLength(25, MinimumLength = 1)]
         public string TripDestination { get; set; }   //  The overall location
         public int UserID { get; set; }
       

@@ -1,0 +1,43 @@
+﻿@model MyTrip.Models.User
+
+@{
+    Layout = "_NonUserLayout";  // JQuery scripts added to layouts
+    ViewData["Title"] = "AddUser";
+}
+<div class="text-center">
+    <h1>Thank you for your interest in MyTrip!</h1>
+    <h1>Fill out the information below to</h1>
+    <h1>Create your User Profile</h1>
+</div>
+
+<div class="text-center">
+    <form asp-controller="UserHome" asp-action="CreateUser" method="post">
+        <p>
+            <label asp-for="FirstName">First Name: </label><br />
+            <input asp-for="FirstName" />
+        </p>
+        <p>
+            <label asp-for="LastName">Last Name: </label><br />
+            <input asp-for="LastName" />
+        </p>
+        <p>
+            <label asp-for="UserName">User Name: </label>
+            <div><span asp-validation-for="UserName"></span></div>
+            <input asp-for="UserName" />
+        </p>
+        <p>
+            <label asp-for="Password">Password: </label><br />
+            <input asp-for="Password" />
+        </p>
+        <p>
+            <label asp-for="Email">Email: </label><br />
+            <input asp-for="Email" />
+        </p>
+        <p>
+            <label asp-for="Bio">Bio: </label><br />
+            <input asp-for="Bio" />
+        </p>
+        <button type="submit">Create</button>
+    </form>
+</div>
+

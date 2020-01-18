@@ -146,19 +146,12 @@ namespace MyTrip.Controllers
                 ModelState.AddModelError(nameof(trip.TripStartDate),
                     "Start date must happen before end date");
             }
-
-            if (ModelState.IsValid)
-            {
-                user = repo.GetUserByUserName(repo.Users[0].UserName);
-                user.Trips.Add(trip);
-                repo.AddTripToUser(user, trip);
-                return View("UserHomeScreen", user);
-            }
-            else
-            {
-                return View();
-            }
             
+            user = repo.GetUserByUserName(repo.Users[0].UserName);
+            user.Trips.Add(trip);
+            repo.AddTripToUser(user, trip);
+            return View("UserHomeScreen", user);                      
+                      
         }
 
      
