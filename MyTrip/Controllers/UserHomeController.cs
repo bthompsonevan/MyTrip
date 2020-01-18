@@ -152,7 +152,8 @@ namespace MyTrip.Controllers
             repo.AddTripToUser(user, trip);
             return View("UserHomeScreen", user);    
             
-            //testing upstream
+            //testing upstream 
+            //tesing individual now
                       
         }
 
