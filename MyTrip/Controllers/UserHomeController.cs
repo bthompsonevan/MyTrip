@@ -150,7 +150,9 @@ namespace MyTrip.Controllers
             user = repo.GetUserByUserName(repo.Users[0].UserName);
             user.Trips.Add(trip);
             repo.AddTripToUser(user, trip);
-            return View("UserHomeScreen", user);                      
+            return View("UserHomeScreen", user);    
+            
+            //testing upstream
                       
         }
 
