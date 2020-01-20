@@ -12,7 +12,6 @@ namespace MyTrip.Models
 
         public AppDbContext(
             DbContextOptions<AppDbContext> options) : base(options) { }
-
         public DbSet<Trip> Trips { get; set; }
         public DbSet<TripAttendee> TripAttendees { get; set; }
         //public DbSet<AppUser> Users { get; set; } // Not needed because of Identity
