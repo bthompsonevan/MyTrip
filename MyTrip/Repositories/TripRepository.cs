@@ -14,27 +14,29 @@ namespace MyTrip.Repositories
 
        
 
-        public List<User> Users { get { return context.Users.ToList(); } }
+       // public List<AppUser> Users { get { return context.Users.ToList(); } }
         public List<Trip> Trips { get { return context.Trips.ToList(); } }
-       
+
+        public List<AppUser> Users => throw new NotImplementedException();
+
         public TripRepository(AppDbContext appDbContext)
         {
             context = appDbContext;
         }
 
-        public void AddUser(User user)
+        public void AddUser(AppUser user)
         {
             context.Users.Add(user);
             context.SaveChanges();
         }
        
-        public User GetUserByUserName(string userName)
-        {
-            User user;
-            user = context.Users.First(b => b.UserName == userName);
+        //public AppUser GetUserByUserName(string userName)
+        //{
+        //    AppUser user;
+        //    user = context.Users.First(b => b.UserName == userName);
                    
-            return user;
-        }
+        //    return ;
+        //}
 
         public void AddTrip(Trip trip)
         {
@@ -49,7 +51,7 @@ namespace MyTrip.Repositories
             context.SaveChanges();
         }
 
-        public void AddTripToUser(User user, Trip trip)
+        public void AddTripToUser(AppUser user, Trip trip)
         {
             user.Trips.Add(trip);
             context.Users.Update(user);

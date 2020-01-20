@@ -85,7 +85,7 @@ namespace MyTripTests
         public void AddTripToUserTestTripNameField()
         {
             // Arrange
-            var user = new User();
+            var user = new AppUser();
             var repo = new FakeTripRepository();
             //Act
             repo.AddTripToUser(user, new Trip()
@@ -102,7 +102,7 @@ namespace MyTripTests
         public void AddTripToUserTestStartDateField()
         {
             // Arrange
-            var user = new User();
+            var user = new AppUser();
             var repo = new FakeTripRepository();
             //Act
             repo.AddTripToUser(user, new Trip()
@@ -119,7 +119,7 @@ namespace MyTripTests
         public void AddTripToUserTestEndDateField()
         {
             // Arrange
-            var user = new User();
+            var user = new AppUser();
             var repo = new FakeTripRepository();
             //Act
             repo.AddTripToUser(user, new Trip()
@@ -136,7 +136,7 @@ namespace MyTripTests
         public void AddTripToUserTestTripDestinationField()
         {
             // Arrange
-            var user = new User();
+            var user = new AppUser();
             var repo = new FakeTripRepository();
             //Act
             repo.AddTripToUser(user, new Trip()
@@ -157,7 +157,7 @@ namespace MyTripTests
         public void AddStopToTripTestStopNameField()
         {
             // Arrange
-            var user = new User();
+            var user = new AppUser();
             var repo = new FakeTripRepository();
             Trip trip = new Trip()
             {
@@ -182,7 +182,7 @@ namespace MyTripTests
         public void AddStopToTripTestStartDateField()
         {
             // Arrange
-            var user = new User();
+            var user = new AppUser();
             var repo = new FakeTripRepository();
             Trip trip = new Trip()
             {
@@ -207,7 +207,7 @@ namespace MyTripTests
         public void AddStopToTripTestEndDateField()
         {
             // Arrange
-            var user = new User();
+            var user = new AppUser();
             var repo = new FakeTripRepository();
             Trip trip = new Trip()
             {
@@ -239,10 +239,10 @@ namespace MyTripTests
             // Arrange
             var repo = new FakeTripRepository();
             //Act
-            repo.AddUser(new User()
+            repo.AddUser(new AppUser()
             {
                UserName = "BernieD",
-               Password = "Treatos",
+              // Password = "Treatos",
                FirstName = "Bernie",
                LastName = "Doodle",
                Email = "bDoodle@gmail.com",
@@ -258,17 +258,17 @@ namespace MyTripTests
             // Arrange
             var repo = new FakeTripRepository();
             //Act
-            repo.AddUser(new User()
+            repo.AddUser(new AppUser()
             {
                 UserName = "BernieD",
-                Password = "Treatos",
+              //  Password = "Treatos",
                 FirstName = "Bernie",
                 LastName = "Doodle",
                 Email = "bDoodle@gmail.com",
                 Bio = "I am puppers it is time for suppers"
             });
             //Assert
-            Assert.Equal("Treatos", repo.Users[0].Password);
+           // Assert.Equal("Treatos", repo.Users[0].Password);
         }
 
         [Fact]
@@ -277,10 +277,10 @@ namespace MyTripTests
             // Arrange
             var repo = new FakeTripRepository();
             //Act
-            repo.AddUser(new User()
+            repo.AddUser(new AppUser()
             {
                 UserName = "BernieD",
-                Password = "Treatos",
+              //  Password = "Treatos",
                 FirstName = "Bernie",
                 LastName = "Doodle",
                 Email = "bDoodle@gmail.com",
@@ -296,10 +296,10 @@ namespace MyTripTests
             // Arrange
             var repo = new FakeTripRepository();
             //Act
-            repo.AddUser(new User()
+            repo.AddUser(new AppUser()
             {
                 UserName = "BernieD",
-                Password = "Treatos",
+              //  Password = "Treatos",
                 FirstName = "Bernie",
                 LastName = "Doodle",
                 Email = "bDoodle@gmail.com",
@@ -315,10 +315,10 @@ namespace MyTripTests
             // Arrange
             var repo = new FakeTripRepository();
             //Act
-            repo.AddUser(new User()
+            repo.AddUser(new AppUser()
             {
                 UserName = "BernieD",
-                Password = "Treatos",
+              //  Password = "Treatos",
                 FirstName = "Bernie",
                 LastName = "Doodle",
                 Email = "bDoodle@gmail.com",
@@ -334,10 +334,10 @@ namespace MyTripTests
             // Arrange
             var repo = new FakeTripRepository();
             //Act
-            repo.AddUser(new User()
+            repo.AddUser(new AppUser()
             {
                 UserName = "BernieD",
-                Password = "Treatos",
+               // Password = "Treatos",
                 FirstName = "Bernie",
                 LastName = "Doodle",
                 Email = "bDoodle@gmail.com",
@@ -355,17 +355,17 @@ namespace MyTripTests
             FakeTripRepository repo = new FakeTripRepository();
 
             //Act
-            repo.AddUser(new User()
+            repo.AddUser(new AppUser()
             {
                 UserName = "BernieD",
-                Password = "Treatos",
+              //  Password = "Treatos",
                 FirstName = "Bernie",
                 LastName = "Doodle",
                 Email = "bDoodle@gmail.com",
                 Bio = "Ball is life"
             });
 
-            User user = repo.GetUserByUserName("BernieD");
+            AppUser user = repo.GetUserByUserName("BernieD");
 
             //Assert
             Assert.Equal("Bernie", user.FirstName);

@@ -10,10 +10,7 @@ using MyTrip.Repositories;
 using MyTrip.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
-
-
-
+using Microsoft.AspNetCore.Identity;
 
 namespace MyTrip
 {
@@ -36,6 +33,8 @@ namespace MyTrip
             //Added MVC services to empty project
             services.AddMvc();
 
+            
+
             //Dependency Injection
             services.AddTransient<ITripRepository, TripRepository>();
 
@@ -49,7 +48,11 @@ namespace MyTrip
                 services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:MySqlConnection"]));
             }
 
-           
+            //Adding Identity to project
+            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
+                       .AddDefaultTokenProviders();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +69,9 @@ namespace MyTrip
 
             //deleted Hello World code and added this code
             app.UseMvcWithDefaultRoute();
+
+            //adding authentication to project from identity
+            app.UseAuthentication();
 
             // Create or update the database and apply migrations.
             context.Database.Migrate();

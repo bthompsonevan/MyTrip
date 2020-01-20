@@ -19,19 +19,19 @@ namespace MyTrip.Controllers
         }
 
         //, List<Trip> usersTrips  was experimenting with this earlier
-        public IActionResult UserHomeScreen(User user)
+        public IActionResult UserHomeScreen(AppUser user)
         {
             //Once we learn logins update this code so it is not semi-hardcoded. 
-            user = repo.GetUserByUserName(repo.Users[0].UserName);
+           // user = repo.GetUserByUserName(repo.Users[0].UserName);
             List<Trip> userTrips = new List<Trip>();
             userTrips = repo.Trips;
 
             foreach (Trip t in userTrips)
             {
-                if (user.UserID == t.UserID)
-                {
-                    user.Trips.Add(t);
-                }
+                //if (user.UserID == t.UserID)
+                //{
+                //    user.Trips.Add(t);
+                //}
             }
 
             return View("UserHomeScreen", user);
@@ -45,19 +45,20 @@ namespace MyTrip.Controllers
         [HttpPost]
         public ViewResult UserLogInScreen(string userName)
         {
-            string passedValue = repo.GetUserByUserName(userName).UserName;
+            //string passedValue = repo.GetUserByUserName(userName).UserName;
 
-            if (userName == passedValue)
-            {
-                
-                User user = repo.GetUserByUserName(userName);
-                
-                return View("UserHomeScreen", user);
-            }
-            else
-            {
-                return View("CreateUser");
-            }
+            //if (userName == passedValue)
+            //{
+
+            //    AppUser user = repo.GetUserByUserName(userName);
+
+            //    return View("UserHomeScreen", user);
+            //}
+            //else
+            //{
+            //    return View("CreateUser");
+            //}
+            return View();
                 
         }        
 
@@ -74,7 +75,7 @@ namespace MyTrip.Controllers
             return View();
         }
         [HttpPost]
-        public ViewResult CreateUser(User user)
+        public ViewResult CreateUser(AppUser user)
         {
             if (ModelState.IsValid)
             {
@@ -97,37 +98,39 @@ namespace MyTrip.Controllers
         }
 
         [HttpPost]
-        public ViewResult InviteAttendee(Trip trip, User user, TripAttendee tripAttendee)
+        public ViewResult InviteAttendee(Trip trip, AppUser user, TripAttendee tripAttendee)
         {
-            
-            user = repo.GetUserByUserName(repo.Users[0].UserName);
-            //TODO: get logic to associate a trip
-            //Getting an out of range exception error  --- I think it is not transferring the trips again
-            //repo.AddAttendeeToTrip(user.Trips[0], tripAttendee);
-            return View("UserHomeScreen", user);
+
+            //user = repo.GetUserByUserName(repo.Users[0].UserName);
+            ////TODO: get logic to associate a trip
+            ////Getting an out of range exception error  --- I think it is not transferring the trips again
+            ////repo.AddAttendeeToTrip(user.Trips[0], tripAttendee);
+            //return View("UserHomeScreen", user);
+            return View();
         }
 
         /* **********************************
         *   CURRENT TRIP ACTION METHODS     *     
         ************************************/
-        public ViewResult CurrentTrips(User user, List<Trip> usersTrips)
+        public ViewResult CurrentTrips(AppUser user, List<Trip> usersTrips)
         {
 
-            user = repo.GetUserByUserName(repo.Users[0].UserName);
-            int usersID = user.UserID;
-            usersTrips = repo.Trips;
-            List<Trip> updatedTrips = new List<Trip>();
+            //user = repo.GetUserByUserName(repo.Users[0].UserName);
+            ////int usersID = user.UserID;
+            //usersTrips = repo.Trips;
+            //List<Trip> updatedTrips = new List<Trip>();
 
-            foreach (Trip t in usersTrips)
-            {
+            //foreach (Trip t in usersTrips)
+            //{
 
-                if (user.UserID == t.UserID)
-                {
-                    updatedTrips.Add(t);
-                }
-            }
+            //    //if (user.UserID == t.UserID)
+            //    //{
+            //    //    updatedTrips.Add(t);
+            //    //}
+            //}
 
-            return View(updatedTrips);
+            // return View(updatedTrips);
+            return View();
         }
 
         /* **********************************
@@ -139,18 +142,20 @@ namespace MyTrip.Controllers
         }
 
         [HttpPost]
-        public ViewResult AddTrip(Trip trip, User user)
+        public ViewResult AddTrip(Trip trip, AppUser user)
         {
-            if (trip.TripStartDate > trip.TripEndDate)
-            {
-                ModelState.AddModelError(nameof(trip.TripStartDate),
-                    "Start date must happen before end date");
-            }
-            
-            user = repo.GetUserByUserName(repo.Users[0].UserName);
-            user.Trips.Add(trip);
-            repo.AddTripToUser(user, trip);
-            return View("UserHomeScreen", user);   
+            //if (trip.TripStartDate > trip.TripEndDate)
+            //{
+            //    ModelState.AddModelError(nameof(trip.TripStartDate),
+            //        "Start date must happen before end date");
+            //}
+
+            //user = repo.GetUserByUserName(repo.Users[0].UserName);
+            //user.Trips.Add(trip);
+            //repo.AddTripToUser(user, trip);
+            //return View("UserHomeScreen", user);   
+
+            return View();
             
                                
         }
