@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTrip", "MyTrip\MyTrip.csproj", "{CEBCD6E2-9D30-4E8E-ADDD-4B404B7B82F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTripTests", "MyTripTests\MyTripTests.csproj", "{252B4035-BE32-467B-B3F8-D638519AE86D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTripTests", "MyTripTests\MyTripTests.csproj", "{252B4035-BE32-467B-B3F8-D638519AE86D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
