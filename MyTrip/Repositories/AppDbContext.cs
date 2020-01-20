@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MyTrip.Models
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
 
         public AppDbContext(
