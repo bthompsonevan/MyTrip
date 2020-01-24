@@ -18,8 +18,7 @@ namespace MyTrip.Models
         //[StringLength(60, MinimumLength = 2)]
         //public string LastName { get; set; }
         //[Required]
-        //[StringLength(1000, MinimumLength = 3)]
-        //public string Bio { get; set; }
+        
 
         public List<Trip> Trips { get { return trips; } }
     }
