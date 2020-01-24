@@ -13,17 +13,17 @@
 <div class="text-center">
 
     <form asp-controller="UserHome" asp-action="UserLogInScreen" method="post">
-        @*<p>
+        <p>
             <label asp-for="UserName">User Name: </label><br />
             <div><span asp-validation-for="UserName"></span></div>
             <input asp-for="UserName" />
         </p>
         <p>
-            <label asp-for="Password">Password: </label><br />
-            <div><span asp-validation-for="Password"></span></div>
-            <input asp-for="Password" />
+            <label asp-for="PasswordHash">Password: </label><br />
+            <div><span asp-validation-for="PasswordHash"></span></div>
+            <input asp-for="PasswordHash" />
         </p>
-        <button type="submit">Log In</button>*@
+        <button type="submit">Log In</button>
     </form>
 </div>
 
