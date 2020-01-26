@@ -11,6 +11,7 @@ using MyTrip.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace MyTrip
 {
@@ -46,13 +47,13 @@ namespace MyTrip
             } else if (environment.IsProduction())
             {
                 services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:MySqlConnection"]));
-            }
+            }         
+                     
+           
 
             //Adding Identity to project
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
                        .AddDefaultTokenProviders();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +73,9 @@ namespace MyTrip
 
             //adding authentication to project from identity
             app.UseAuthentication();
+          //  app.UseAuthorization();
+
+           
 
             // Create or update the database and apply migrations.
             context.Database.Migrate();
@@ -83,6 +87,9 @@ namespace MyTrip
             {
                 routes.MapRoute("default", "{controller=UserHome}/{action=UserLogInScreen}/{id?}");
             });
+
+            AppDbContext.CreateAdminAccount(app.ApplicationServices,
+                Configuration).Wait();
 
 
         }
