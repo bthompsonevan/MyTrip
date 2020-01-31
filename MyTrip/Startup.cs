@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.Extensions.Logging;
 
 namespace MyTrip
 {
@@ -31,6 +32,19 @@ namespace MyTrip
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //services.AddIdentity<AppUser, IdentityRole>(opts =>
+            //{
+            //    opts.User.RequireUniqueEmail = true;
+            //    opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+            //    opts.Password.RequiredLength = 6;
+            //    opts.Password.RequireNonAlphanumeric = false;
+            //    opts.Password.RequireLowercase = false;
+            //    opts.Password.RequireUppercase = false;
+            //    opts.Password.RequireDigit = false;
+            //}).AddEntityFrameworkStores<AppDbContext>()
+            // .AddDefaultTokenProviders();
+
             //Added MVC services to empty project
             services.AddMvc();
 
@@ -47,22 +61,29 @@ namespace MyTrip
             } else if (environment.IsProduction())
             {
                 services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:MySqlConnection"]));
-            }         
-                     
+            }      
+                    
            
-
             //Adding Identity to project
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
                        .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext context, 
+            ILoggerFactory loggerFactory)
         {
+            app.Use(async (HttpContext, next) =>
+            {
+                HttpContext.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                HttpContext.Response.Headers.Add("Cache-Control", "no-cache");
+                await next();
+            });
+
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
-            }           
-         
+            }    
+
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -70,18 +91,22 @@ namespace MyTrip
 
             //deleted Hello World code and added this code
             app.UseMvcWithDefaultRoute();
+           
 
             //adding authentication to project from identity
-            app.UseAuthentication();
-          //  app.UseAuthorization();
+            
+            
 
            
 
+            app.UseMvcWithDefaultRoute();
+            app.UseStaticFiles();
+           // AppDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
+
             // Create or update the database and apply migrations.
             context.Database.Migrate();
-
-
-
+            app.UseAuthentication();   // Must precede app.UseMvc!!!
+            app.UseMvc();
             //Changed the routing of default locations so it will run with UserHomeController and UserHomeScreen view
             app.UseMvc(routes =>
             {
@@ -89,8 +114,7 @@ namespace MyTrip
             });
 
             AppDbContext.CreateAdminAccount(app.ApplicationServices,
-                Configuration).Wait();
-
+              Configuration).Wait();
 
         }
     }

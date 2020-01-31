@@ -9,6 +9,7 @@ using MyTrip.Models;
 
 namespace MyTrip.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
 
@@ -21,6 +22,7 @@ namespace MyTrip.Controllers
             signInManager = signinMgr;
         }
 
+        [AllowAnonymous] public ViewResult Index() => View(new Dictionary<string, object> { ["Placeholder"] = "Placeholder" });
 
         [AllowAnonymous]
         public IActionResult Login(string returnUrl)
@@ -53,5 +55,7 @@ namespace MyTrip.Controllers
             }
             return View(details);
         }
+
+       
     }
 }
