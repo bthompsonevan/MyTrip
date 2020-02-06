@@ -73,11 +73,23 @@ namespace MyTrip
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext context, 
             ILoggerFactory loggerFactory)
         {
+            //app.Use(async (HttpContext, next) =>
+            //{
+            //    HttpContext.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+            //   // HttpContext.Response.Headers.Add("X-Frame-Options", "No-sniff");  -- Caused home page to not load.
+            //    HttpContext.Response.Headers.Add("Cache-Control", "no-cache");
+            //    await next();
+            //});
+
+            app.Use(async (HttpContext, next) =>
+            {
+                HttpContext.Response.Headers.Add("Cache-Control", "no-cache");
+                await next();
+            });
+
             app.Use(async (HttpContext, next) =>
             {
                 HttpContext.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
-               // HttpContext.Response.Headers.Add("X-Frame-Options", "No-sniff");  -- Caused home page to not load.
-                HttpContext.Response.Headers.Add("Cache-Control", "no-cache");
                 await next();
             });
 
