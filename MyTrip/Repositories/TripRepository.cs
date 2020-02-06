@@ -15,7 +15,7 @@ namespace MyTrip.Repositories
        
 
        // public List<AppUser> Users { get { return context.Users.ToList(); } }
-        public List<Trip> Trips { get { return context.Trips.ToList(); } }
+       // public List<Trip> Trips { get { return context.Trips.ToList(); } }
 
         public List<AppUser> Users => throw new NotImplementedException();
 
@@ -27,16 +27,17 @@ namespace MyTrip.Repositories
         public void AddUser(AppUser user)
         {
             context.Users.Add(user);
-            context.SaveChanges();
+         //   context.SaveChanges();
         }
-       
-        //public AppUser GetUserByUserName(string userName)
-        //{
-        //    AppUser user;
-        //    user = context.Users.First(b => b.UserName == userName);
-                   
-        //    return ;
-        //}
+
+        public AppUser GetUserByUserName(string userName)
+        {
+            AppUser user;
+            user = context.Users.FirstOrDefault(b => b.UserName == userName);
+
+            return user;
+        }
+        //   Potential fix is to change First to FirstOrDefault! 
 
         public void AddTrip(Trip trip)
         {

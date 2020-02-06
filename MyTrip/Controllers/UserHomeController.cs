@@ -24,7 +24,7 @@ namespace MyTrip.Controllers
             //Once we learn logins update this code so it is not semi-hardcoded. 
            // user = repo.GetUserByUserName(repo.Users[0].UserName);
             List<Trip> userTrips = new List<Trip>();
-            userTrips = repo.Trips;
+          //  userTrips = repo.Trips;
 
             foreach (Trip t in userTrips)
             {

@@ -10,7 +10,7 @@ namespace MyTrip.Repositories
     public interface ITripRepository
     {
         List<AppUser> Users { get; }
-        List<Trip> Trips { get; }
+      //  List<Trip> Trips { get; }
         void AddUser(AppUser user);
         void AddTrip(Trip trip);
        // AppUser GetUserByUserName(string userName);
