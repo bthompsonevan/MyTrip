@@ -32,6 +32,7 @@ namespace MyTrip
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+           
 
             //services.AddIdentity<AppUser, IdentityRole>(opts =>
             //{
@@ -52,6 +53,16 @@ namespace MyTrip
 
             //Dependency Injection
             services.AddTransient<ITripRepository, TripRepository>();
+
+            //It is not recognizing ConfigureMethod for this code
+            // services.Configure(options => {
+            //    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+            //    options.CheckConsentNeeded = context => true;
+            //    options.MinimumSameSitePolicy = SameSiteMode.None;
+
+            //    // This will tell the browser to prevent transmission of a cookie over an unencrypted HTTP request... hopefully
+            //    options.Secure = CookieSecurePolicy.Always;
+            //});
 
             if (environment.IsDevelopment())
             {
@@ -83,6 +94,7 @@ namespace MyTrip
 
             app.Use(async (HttpContext, next) =>
             {
+                HttpContext.Response.Headers.Add("Pragma", "no-cache");
                 HttpContext.Response.Headers.Add("Cache-Control", "no-cache");
                 await next();
             });
