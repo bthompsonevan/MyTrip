@@ -76,7 +76,13 @@ namespace MyTrip
             app.Use(async (HttpContext, next) =>
             {
                 HttpContext.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+               // HttpContext.Response.Headers.Add("X-Frame-Options", "No-sniff");  -- Caused home page to not load.
                 HttpContext.Response.Headers.Add("Cache-Control", "no-cache");
+                await next();
+            });
+
+            app.Use(async (Httpcontext, next) => {
+                Httpcontext.Response.Headers.Add("X-Content-Type-Options", "nosniff");
                 await next();
             });
 
