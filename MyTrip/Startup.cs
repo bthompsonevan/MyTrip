@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MyTrip
 {
@@ -32,7 +33,7 @@ namespace MyTrip
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-           
+
 
             //services.AddIdentity<AppUser, IdentityRole>(opts =>
             //{
@@ -45,6 +46,8 @@ namespace MyTrip
             //    opts.Password.RequireDigit = false;
             //}).AddEntityFrameworkStores<AppDbContext>()
             // .AddDefaultTokenProviders();
+
+            
 
             //Added MVC services to empty project
             services.AddMvc();
@@ -72,9 +75,10 @@ namespace MyTrip
             } else if (environment.IsProduction())
             {
                 services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionString:MySqlConnection"]));
-            }      
-                    
-           
+            }
+            
+
+
             //Adding Identity to project
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
                        .AddDefaultTokenProviders();
@@ -84,6 +88,8 @@ namespace MyTrip
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext context, 
             ILoggerFactory loggerFactory)
         {
+
+
             //app.Use(async (HttpContext, next) =>
             //{
             //    HttpContext.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
@@ -91,6 +97,8 @@ namespace MyTrip
             //    HttpContext.Response.Headers.Add("Cache-Control", "no-cache");
             //    await next();
             //});
+
+        
 
             app.Use(async (HttpContext, next) =>
             {
@@ -112,7 +120,9 @@ namespace MyTrip
 
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
-            }    
+            }
+
+            
 
 
             app.UseDefaultFiles();
